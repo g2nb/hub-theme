@@ -21,6 +21,14 @@
             <h1>Your Projects</h1>
             <p class="lead">Launch, create or share notebook projects.</p>
             <input type="search" id="nb-project-search" placeholder="Search Projects" class="form-control" />
+            <div id="nb-view" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-default active" title="List View">
+                    <input type="radio" name="view" autocomplete="off" value="list" checked> <i class="fa fa-th-list"></i>
+                </label>
+                <label class="btn btn-default" title="Card View">
+                    <input type="radio" name="view" autocomplete="off" value="cards"> <i class="fa fa-th-large"></i>
+                </label>
+            </div>
             <button id ="nb-new" class="btn btn-primary"><i class="fa fa-plus-circle"></i> New Project</button>
         </div>
 
