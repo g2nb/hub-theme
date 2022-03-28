@@ -1,0 +1,94 @@
+{% extends "templates/login.html" %}
+
+{% block meta %}
+    {{ super() }}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script type="text/javascript">
+        require(["jquery"], function () {
+            $(document).ready(function () {
+                // Set the cookie on login
+                $("#login_form").submit(function () {
+                    document.cookie = "GenePattern=" + $("#username_input").val() + "|" +
+                        encodeURIComponent(btoa($("#password_input").val())) + ";path=/;domain=genepattern.org"
+                });
+            });
+        });
+    </script>
+    <style language="text/css">
+        .globus_link {
+            position: relative;
+            top: 4px;
+            text-align: right;
+            float: right;
+        }
+
+        .globus_link > img {
+            height: 27px;
+        }
+
+        #bottom_links {
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        #bottom_links > a {
+            color: black;
+        }
+    </style>
+{% endblock %}
+
+{% block login_container %}
+    {% if custom_html %}
+        {{ custom_html | safe }}
+    {% elif login_service %}
+        <div class="service-login">
+            <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
+                Sign in with {{login_service}}
+            </a>
+        </div>
+    {% else %}
+        <form id="login_form" action="{{authenticator_login_url}}" method="post" role="form">
+            <div class="auth-form-header">Sign in</div>
+            <div class='auth-form-body'>
+                {% if login_error %}
+                    <p class="login_error">{{login_error}}</p>
+                {% endif %}
+                <label for="username_input">Username:</label>
+                <input id="username_input" type="text" autocapitalize="off" autocorrect="off" class="form-control" name="username" val="{{username}}" tabindex="1" autofocus="autofocus" />
+                <label for='password_input'>Password:</label>
+                <input type="password" class="form-control" name="password" id="password_input" tabindex="2" />
+
+                <div class="feedback-container">
+                    <input id="login_submit" type="submit" class='btn btn-jupyter' value='Sign in' tabindex="3" />
+                    <div class="feedback-widget hidden">
+                        <i class="fa fa-spinner"></i>
+                    </div>
+                    <a class="globus_link" href="http://localhost:8080/gp/oauthglobus?forward=http%3A%2F%2Flocalhost%3A8000%2Fhub%2Flogin">
+                        or
+                        <img src="https://cloud.genepattern.org/gp/images/i_logo-globus.png" alt="Globus">
+                        Sign in using Globus
+                    </a>
+                </div>
+
+                <div id="bottom_links">
+                    <hr />
+                    <a href="https://cloud.genepattern.org/gp/pages/registerUser.jsf">Register Account</a> &bull;
+                    <a href="https://cloud.genepattern.org/gp/pages/forgotPassword.jsf">Forgot Password</a> &bull;
+                    <a href="https://notebook.genepattern.org">g2nb Website</a>
+                </div>
+
+                {% block login_terms %}
+                    {% if login_term_url %}
+                        <div id="login_terms" class="login_terms">
+                            <input type="checkbox" id="login_terms_checkbox" name="login_terms_checkbox" required />
+                            {% block login_terms_text %} {# allow overriding the text #}
+                            By logging into the platform you accept the <a href="{{ login_term_url }}">terms and conditions</a>.
+                            {% endblock login_terms_text %}
+                        </div>
+                    {% endif %}
+                {% endblock login_terms %}
+            </div>
+        </form>
+    {% endif %}
+{% endblock login_container %}
