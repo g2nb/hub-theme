@@ -3,10 +3,10 @@
  */
 
 :root {
-  --background-color: #5B9C0BFF;
-  --background-color-hover: #4d845e;
-  --border-color: #4a7f5a;
-  --border-color-hover: #3b6649;
+  --background-color: #0b9c81;
+  --background-color-hover: #08745f;
+  --border-color: #065c4b;
+  --border-color-hover: #054b3d;
   --text-color: #FFFFFF;
   --text-color-dark: #000000;
 }
@@ -27,15 +27,13 @@
 }
 
 .btn-primary:hover,
-.btn-jupyter:hover {
-  background-color: var(--background-color-hover);
-  border-color: var(--border-color-hover);
-}
-
+.btn-jupyter:hover,
 .btn-primary:focus,
-.btn-jupyter:focus {
-  background-color: var(--background-color-hover);
-  border-color: var(--border-color-hover);
+.btn-jupyter:focus,
+.btn-primary:active,
+.btn-jupyter:active {
+  background-color: var(--background-color-hover) !important;
+  border-color: var(--border-color-hover) !important;
 }
 
 #nb-project-search:focus,
