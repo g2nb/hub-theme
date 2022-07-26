@@ -3,27 +3,41 @@
  */
 
 :root {
-  --background-color: #0b9c81;
-  --background-color-hover: #08745f;
-  --border-color: #065c4b;
-  --border-color-hover: #054b3d;
+  --background-color: #fafbfc;
+  --highlight-color: #067132;
+  --highlight-color-hover: #128440;
+  --border-color: #025e27;
+  --border-color-hover: #097233;
   --text-color: #FFFFFF;
   --text-color-dark: #000000;
+  --run-color: #b8dfc8;
 }
 
 /**
  * Apply the theme colors throughout the UI
  */
 
+body {
+  background-color: var(--background-color);
+}
+
 #login-main .auth-form-header {
-  background: var(--background-color);
+  background: var(--highlight-color);
+}
+
+.navbar {
+  color: var(--text-color);
+  border-color: var(--border-color);
+  background: linear-gradient(90deg, var(--highlight-color) 0%, var(--highlight-color) 35%, var(--border-color) 100%);
+  box-shadow: rgba(0, 0, 0, 0.3) 3px 0 13px 0;
 }
 
 .btn-primary,
 .btn-jupyter {
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: var(--highlight-color);
   border-color: var(--border-color);
+  border-radius: 5px;
 }
 
 .btn-primary:hover,
@@ -32,7 +46,7 @@
 .btn-jupyter:focus,
 .btn-primary:active,
 .btn-jupyter:active {
-  background-color: var(--background-color-hover) !important;
+  background-color: var(--highlight-color-hover) !important;
   border-color: var(--border-color-hover) !important;
 }
 
@@ -63,18 +77,48 @@
   top: 5px;
 }
 
-#jupyterhub-logo > a > span.logo-text > span.logo-g {
-  color: #339900;
-}
-
-#jupyterhub-logo > a > span.logo-text > span.logo-2 {
-  color: #666666;
-}
-
-#jupyterhub-logo > a > span.logo-text > span.logo-n {
-  color: #CC3333;
-}
-
+#jupyterhub-logo > a > span.logo-text > span.logo-g,
+#jupyterhub-logo > a > span.logo-text > span.logo-2,
+#jupyterhub-logo > a > span.logo-text > span.logo-n,
 #jupyterhub-logo > a > span.logo-text > span.logo-b {
-  color: #333399;
+  color: var(--text-color);
+}
+
+/**
+ * Style the login widget
+ */
+
+#login_widget > .navbar-btn {
+  opacity: 95%;
+  border-radius: 5px;
+}
+
+/**
+ * Style the projects
+ */
+
+div.nb-project,
+div.nb-project > .panel-body > .panel-text:after {
+  background-color: var(--run-color);
+}
+
+div.nb-project:hover,
+div.nb-project:hover > .panel-body > .panel-text:after {
+  background-color: var(--background-color);
+}
+
+div.nb-project .nb-img-top {
+    background: radial-gradient(circle, rgba(15,134,64,1) 0%, rgba(2,68,29,1) 100%);
+}
+
+.nb-project .panel-title {
+  font-weight: bold;
+}
+
+.nb-project .panel-text {
+  color: var(--border-color);
+}
+
+.nb-project .badge {
+  background-color: var(--border-color);
 }
