@@ -10,7 +10,7 @@
   --border-color-hover: #097233;
   --text-color: #FFFFFF;
   --text-color-dark: #000000;
-  --run-color: #b8dfc8;
+  --run-color: radial-gradient(circle, rgb(223, 245, 232) 0%, rgb(133, 165, 146) 100%);
 }
 
 /**
@@ -97,18 +97,13 @@ body {
  * Style the projects
  */
 
-div.nb-project,
-div.nb-project > .panel-body > .panel-text:after {
-  background-color: var(--run-color);
-}
-
 div.nb-project:hover,
 div.nb-project:hover > .panel-body > .panel-text:after {
   background-color: var(--background-color);
 }
 
 div.nb-project .nb-img-top {
-    background: radial-gradient(circle, rgba(15,134,64,1) 0%, rgba(2,68,29,1) 100%);
+    background: var(--run-color);
 }
 
 .nb-project .panel-title {
