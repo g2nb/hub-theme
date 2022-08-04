@@ -9,6 +9,7 @@
   --border-color: #025e27;
   --border-color-hover: #097233;
   --text-color: #FFFFFF;
+  --text-color-secondary: #777777;
   --text-color-dark: #000000;
   --run-color: radial-gradient(circle, rgb(223, 245, 232) 0%, rgb(133, 165, 146) 100%);
 }
@@ -111,7 +112,7 @@ div.nb-project .nb-img-top {
 }
 
 .nb-project .panel-text {
-  color: var(--border-color);
+  color: var(--text-color-secondary);
 }
 
 .nb-project .badge {
