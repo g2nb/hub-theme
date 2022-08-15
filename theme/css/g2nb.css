@@ -11,7 +11,7 @@
   --text-color: #FFFFFF;
   --text-color-secondary: #777777;
   --text-color-dark: #000000;
-  --run-color: radial-gradient(circle, rgb(223, 245, 232) 0%, rgb(133, 165, 146) 100%);
+  --run-color: #b8d2c3;
 }
 
 /**
@@ -105,6 +105,10 @@ div.nb-project:hover > .panel-body > .panel-text:after {
 
 div.nb-project .nb-img-top {
     background: var(--run-color);
+}
+
+div.nb-project.nb-project-list .nb-img-top {
+    border-color: var(--run-color);
 }
 
 .nb-project .panel-title {
