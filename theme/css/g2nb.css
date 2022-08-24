@@ -100,7 +100,7 @@ body {
  */
 
 div#projects-header {
-    background-color: var(--border-color)
+    background-color: var(--highlight-color)
 }
 
 div.nb-project.nb-project-list:nth-child(even):not(.nb-project-new):not(:hover) {
