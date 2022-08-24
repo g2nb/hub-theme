@@ -12,6 +12,7 @@
   --text-color-secondary: #777777;
   --text-color-dark: #000000;
   --run-color: #b8d2c3;
+  --stripe-color: #f4f7f5;
 }
 
 /**
@@ -97,6 +98,14 @@ body {
 /**
  * Style the projects
  */
+
+div#projects-header {
+    background-color: var(--border-color)
+}
+
+div.nb-project.nb-project-list:nth-child(even):not(.nb-project-new):not(:hover) {
+    background: var(--stripe-color)
+}
 
 div.nb-project:hover,
 div.nb-project:hover > .panel-body > .panel-text:after {
