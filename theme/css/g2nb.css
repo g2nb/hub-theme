@@ -99,10 +99,6 @@ body {
  * Style the projects
  */
 
-div#projects-header {
-    background-color: var(--highlight-color)
-}
-
 div.nb-project.nb-project-list:nth-child(even):not(.nb-project-new):not(:hover) {
     background: var(--stripe-color)
 }
