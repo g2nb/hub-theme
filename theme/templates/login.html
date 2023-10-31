@@ -93,4 +93,36 @@
             {% endblock login_terms %}
         </div>
     </form>
+    <footer id="cookies" class="alert alert-success" style="display: none;">
+        <p>g2nb uses cookies to determine which projects, notebooks, jobs and data belong to your account. We do not
+            share user information. To use g2nb, click Accept below. </p>
+        <p><button class="btn btn-default read-more">Read More</button> <button class="btn btn-primary accept">Accept</button></p>
+        <script>
+            function get_cookie(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1);
+                    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+                }
+                return "";
+            }
+
+            $(document).ready(() => {
+                // If cookies have not been accepted, show the banner
+                if (get_cookie("cookiesaccepted") !== "true") $("#cookies").show();
+
+                // Activate the Read More button
+                $("#cookies .read-more").click(() => window.open('https://www.g2nb.org/cookies/'));
+
+                // Activate the Accept button
+                $("#cookies .accept").click(() => {
+                    $("#cookies").hide();
+                    document.cookie = "cookiesaccepted=true";
+                });
+            });
+        </script>
+    </footer>
 {% endblock login_container %}
